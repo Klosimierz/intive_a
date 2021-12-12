@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HistoryComponent implements OnInit {
 
   constructor() { }
-
+  history:string[] | undefined = [];
   ngOnInit(): void {
+    console.log(localStorage.getItem('history'));
+    console.log(history);
+    this.history=(localStorage.getItem('history'))?.split(' n ');
+    console.log(this.history);
   }
-
 }

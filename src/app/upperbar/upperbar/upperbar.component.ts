@@ -26,12 +26,20 @@ export class UpperbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  appendToStorage(name:string, data:string){
+    var old = localStorage.getItem(name);
+    if(old === null) old = "";
+    localStorage.setItem(name, old + data);
+}
+
   onSubmit(payload:any) {
 
     const {search} = payload.form.value;
     this.searchService.getArticles(this.language,search,this.limit).subscribe(result => {
       this.resultObject.emit(result);
-    })
+      this.appendToStorage('history',search+' n ');
+      console.log(localStorage.getItem('history'));
+    });
   }
 
 }
