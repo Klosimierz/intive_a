@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'intive-wiki';
+
+  articleList: any = [];
+  location: string = '';
+
+  constructor(private router:Router) {
+    this.location = router.url;
+    console.log(this.location);
+  }
+
+  onReceivingResultObject(payload:any) {
+    this.articleList = payload.pages;
+    console.log(this.articleList);
+  }
 }

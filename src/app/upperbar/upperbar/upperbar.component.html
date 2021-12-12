@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Wyszukiwarka artykułów</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/history">Historia wyszukiwania</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Język wyszukiwania: {{language | uppercase}}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)='changeLanguage("pl")'>Polski</a></li>
+              <li><a class="dropdown-item" (click)='changeLanguage("en")'>Angielski</a></li>
+              <li><a class="dropdown-item" (click)='changeLanguage("de")'>Niemiecki</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form #searchForm="ngForm" (ngSubmit)='onSubmit(searchForm)' class="d-flex">
+          <input class="form-control me-2" type="text" name="search" ngModel placeholder="Wyszukaj artykuły" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="floating-buttons card bg-light">
+        <span style="text-align: center">Limit wyników:</span>
+        <div class="btn-group" role="group" >
+            <button type="button" class="btn btn-primary" (click)='changeLimit(10)'>10</button>
+            <button type="button" class="btn btn-primary" (click)='changeLimit(20)'>20</button>
+            <button type="button" class="btn btn-primary" (click)='changeLimit(50)'>50</button>
+        </div>
+  </div>

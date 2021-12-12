@@ -1,0 +1,8 @@
+.floating-buttons {
+    position:fixed;
+    bottom:5px;
+    right:5px;
+    margin:0;
+    padding:5px 3px;
+    z-index: 1000
+}
